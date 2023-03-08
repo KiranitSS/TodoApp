@@ -1,0 +1,23 @@
+﻿@model TodoList
+
+<div class="card card-outline-primary m-1 p-1 shadow padd big-marg-top">
+    <div class="bg-faded p-1">
+        <h4>
+            @Model?.Title
+        </h4>
+        <a asp-controller="TodoLists" asp-action="ConfirmDelete" asp-route-listId="@Model?.Id"
+           class="btn btn-danger btn-sm float-right marg">
+            Delete list
+        </a>
+        <form id="@Model?.Id" asp-controller="TodoLists" asp-action="Unhide" asp-route-listId="@Model?.Id" method="post">
+            <button type="submit"
+                    class="btn btn-warning btn-orange btn-sm float-right marg">
+                Unhide list
+            </button>
+        </form>
+        <a asp-controller="TodoLists" asp-action="Todos" asp-route-listId="@Model?.Id" method="get"
+           class="btn btn-success btn-sm float-right marg">
+            Show todos
+        </a>
+    </div>
+</div>

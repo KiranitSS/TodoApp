@@ -1,0 +1,44 @@
+﻿@model ReminderViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="card card-outline-primary m-1 p-1 marg-no-border">
+    <div class="bg-faded p-1 d-flex justify-content-center">
+        <form asp-controller="Todos" asp-action="SetReminder" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="border-grey">
+                <div class="form-group">
+                    <label class="marg" asp-for="Id" hidden></label>
+                    <input class="marg" asp-for="Id" hidden readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="marg" asp-for="TodoId" hidden></label>
+                    <input class="marg" asp-for="TodoId" hidden readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="marg" asp-for="RemindTime" class="control-label">Reminder date should be bigger than today date:</label>
+                    <input class="marg" asp-for="RemindTime" class="form-control" />
+                    <div class="text-center">
+                        <span asp-validation-for="RemindTime" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="marg-no-border">
+                    <button type="submit"
+                            class="btn btn-sm btn-primary border-grey">
+                        Set Reminder
+                    </button>
+
+                    <a asp-controller="TodoLists" asp-action="Todos" asp-route-listId="@Model.ListId"
+                       method="get" class="btn btn-sm float-right btn-secondary border-grey">
+                        Back
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

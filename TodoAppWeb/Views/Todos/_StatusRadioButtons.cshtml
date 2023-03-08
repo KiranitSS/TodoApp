@@ -1,0 +1,10 @@
+﻿@model TodoViewModel
+<div id="status-radio" class="border-grey padd big-marg">
+    <div>Status:</div>
+    @foreach (var item in Enum.GetValues(Model.Status.GetType()))
+    {
+        @Html.RadioButtonFor(m => m.Status, item)
+        @Html.Label(item.ToString(), " " + item.ToString())
+        <br />
+    }
+</div>

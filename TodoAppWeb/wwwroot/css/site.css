@@ -1,0 +1,120 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.btn-orange {
+    background-color: orange;
+}
+
+    .btn-orange:hover {
+        background-color: darkorange;
+    }
+
+.btn-yellow {
+    background-color: gold;
+}
+
+    .btn-yellow:hover {
+        background-color: goldenrod;
+    }
+
+.validation-summary-errors {
+    visibility: hidden;
+}
+
+.input-validation-error {
+    border: 1px solid red;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.padd {
+    padding: 5px 5px 5px 5px;
+}
+
+.marg-no-border {
+    border-width: 0;
+    margin: 5px 5px 5px 5px;
+}
+
+.shadow {
+    box-shadow: 10px 10px 5px lightgrey !important;
+}
+
+.marg {
+    margin: 5px 5px 5px 5px;
+}
+
+.big-marg {
+    margin: 10px 10px 10px 10px;
+}
+
+.big-marg-top {
+    margin-top: 15px !important;
+}
+
+.border-grey {
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
+
+.nav-btn {
+    border-radius: 3px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+    .nav-btn:hover {
+        background-color: #279ce6 !important;
+        color: white !important;
+    }
+
+.overdue-todo {
+    border-width: 2px;
+    border-color: red;
+}
+
+.completed-todo {
+    border-width: 2px;
+    border-color: lightgreen;
+}
+
+.in-progress-todo {
+    border-width: 2px;
+    border-color: orange;
+}
+
+.not-started-todo {
+    border-width: 2px;
+    border-color: #8D8D8D;
+}
+
+#status-radio label {
+    margin: 5px 5px 5px 5px;
+}
+
+#notify-img img {
+    width: 100%;
+    max-width: 25px;
+}

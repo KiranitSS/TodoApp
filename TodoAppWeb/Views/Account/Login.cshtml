@@ -1,0 +1,30 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Account" asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <div class="text-center">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password" />
+                <div class="text-center">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary mt-2" type="submit">Log In</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@model TodoListViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="card card-outline-primary m-1 p-1 marg-no-border">
+    <div class="bg-faded p-1 d-flex justify-content-center">
+        <form id="@Model?.Id" asp-controller="TodoLists" asp-action="Delete" asp-route-listId="@Model?.Id" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="border-grey padd">
+                <div class="text-center marg">
+                    Are you sure want to delete '@Model.Title' list?
+                </div>
+                <button type="submit"
+                        class="btn btn-sm btn-danger border-grey">
+                    Delete
+                </button>
+                <a asp-controller="TodoLists" asp-action="Lists"
+                   method="get" class="btn btn-sm float-right btn-secondary border-grey">
+                    Back
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

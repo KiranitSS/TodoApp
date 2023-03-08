@@ -1,0 +1,17 @@
+﻿@model TodoListViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Upcoming";
+}
+
+<div class="text-center">
+    <h1>Upcoming todos</h1>
+    <h3>Here you can see todos, which due date will come within 3 days</h3>
+</div>
+<div class="text-center">
+    @foreach (TodoViewModel todo in Model?.Todos ?? Enumerable.Empty<TodoViewModel>())
+    {
+        <partial name="_ReadonlyTodoInfo" model="todo" />
+    }
+</div>

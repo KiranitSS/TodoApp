@@ -1,0 +1,54 @@
+﻿@model TodoViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+@{
+    string status = Model?.Status switch
+    {
+        TodoStatus.NotStarted => "Not started",
+        TodoStatus.InProgress => "In progress",
+        TodoStatus.Completed => "Completed",
+        _ => "Undefined",
+    };
+}
+
+<div class="card card-outline-primary m-1 p-1">
+    <div class="bg-faded p-1">
+        <h5>
+            Title: @Model?.Title
+        </h5>
+        <h5>
+            Description: @Model?.Description
+        </h5>
+        <h5>
+            Due Date: @Model?.DueDate.ToShortDateString().
+        </h5>
+        <h5>
+            Creation Date: @Model?.CreationDate.ToShortDateString().
+        </h5>
+        <h5>
+            Status: @status.
+        </h5>
+    </div>
+
+    <div class="display-1">
+        <a asp-controller="TodoLists" asp-action="Todos" asp-route-listId="@Model?.ListId" method="get"
+           class="btn btn-sm float-right border-grey btn-secondary marg">
+            Back
+        </a>
+        <form asp-controller="Todos" asp-action="Update" asp-route-todoId="@Model?.Id" method="get">
+            <button type="submit"
+                    class="btn btn-sm float-right border-grey btn-warning marg">
+                Edit
+            </button>
+        </form>
+        <form asp-controller="Todos" asp-action="Delete" asp-route-todoId="@Model?.Id" method="post">
+            <button type="submit"
+                    class="btn btn-sm float-right border-grey btn-danger marg">
+                Delete
+            </button>
+        </form>
+    </div>
+</div>

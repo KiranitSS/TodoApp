@@ -1,0 +1,39 @@
+﻿@model TodoListViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="text-center">
+    <h1>@Model?.Title</h1>
+</div>
+<div class="text-center">
+    @foreach (TodoViewModel todo in Model?.Todos ?? Enumerable.Empty<TodoViewModel>())
+    {
+        <partial name="_TodoInfo" model="todo" />
+    }
+</div>
+
+<div class="card m-1 p-1 marg-no-border big-marg-top">
+    <div class="bg-faded p-1">
+        <a asp-controller="TodoLists" asp-action="Lists"
+           class="btn btn-sm float-right btn-secondary border-grey marg">
+            Back
+        </a>
+        <form asp-controller="TodoLists" asp-action="HideCompletedTodos" asp-route-listId="@Model?.Id" method="post" asp-antiforgery="true">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit"
+                    class="btn btn-sm float-right btn-warning border-grey marg">
+                Hide Completed
+            </button>
+        </form>
+        <form asp-controller="Todos" asp-action="Add" asp-route-listId="@Model?.Id" method="get" asp-antiforgery="true">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit"
+                    class="btn btn-sm float-left btn-primary border-grey marg">
+                Create todo
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model TodoViewModel
+@{
+    string containerBordersStyle = Model.Status switch
+    {
+        TodoStatus.NotStarted => "not-started-todo",
+        TodoStatus.InProgress => "in-progress-todo",
+        TodoStatus.Completed => "completed-todo",
+        _ => string.Empty,
+    };
+
+    string status = Model.Status switch
+    {
+        TodoStatus.NotStarted => "Not started",
+        TodoStatus.InProgress => "In progress",
+        TodoStatus.Completed => "Completed",
+        _ => string.Empty,
+    };
+}
+
+<div class="card card-outline-primary m-1 p-1 shadow padd big-marg-top @containerBordersStyle">
+    <div class="bg-faded p-1">
+        <h4>
+            @Model?.Title
+        </h4>
+        <small>
+            @Model?.Description
+        </small>
+        <small>
+            @status
+        </small>
+        <small>
+            @Model?.Title due date is <b>@Model?.DueDate.ToShortDateString()</b>.
+        </small>
+    </div>
+</div>

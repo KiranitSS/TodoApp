@@ -1,0 +1,22 @@
+﻿@model TodoListsCollectionViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "My Todos";
+}
+
+<div class="text-center">
+    @foreach (TodoList list in Model?.TodoLists ?? Enumerable.Empty<TodoList>())
+    {
+        <partial name="_ListInfo" model="list" />
+    }
+</div>
+
+<div class="card m-1 p-1 marg-btn marg-no-border big-marg-top">
+    <form asp-controller="TodoLists" asp-action="Add" method="get" asp-antiforgery="true">
+        <button type="submit"
+                class="btn btn-sm pull-right btn-primary border-grey marg" style="float:left">
+            Create list
+        </button>
+    </form>
+</div>

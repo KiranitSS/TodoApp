@@ -1,0 +1,13 @@
+﻿@model TodoListsCollectionViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "My Todos";
+}
+
+<div class="text-center">
+    @foreach (TodoList list in Model?.TodoLists ?? Enumerable.Empty<TodoList>())
+    {
+        <partial name="_HiddenListInfo" model="list" />
+    }
+</div>

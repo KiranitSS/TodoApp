@@ -1,0 +1,36 @@
+﻿@model TodoViewModel
+@{
+    string containerBordersStyle = string.Empty;
+
+    containerBordersStyle = Model.Status switch
+    {
+        TodoStatus.NotStarted => "not-started-todo",
+        TodoStatus.InProgress => "in-progress-todo",
+        TodoStatus.Completed => "completed-todo",
+        _ => string.Empty,
+    };
+}
+
+<div class="card card-outline-primary m-1 p-1 shadow padd big-marg-top @containerBordersStyle">
+    <div class="bg-faded p-1">
+        <h4>
+            @Model?.Title
+        </h4>
+        <small>
+            This todo due date is <b>@Model?.DueDate.ToShortDateString()</b>.
+        </small>
+
+        <form asp-controller="Todos" asp-action="Info" asp-route-todoId="@Model?.Id" asp-route-listId="@Model?.ListId" method="get" asp-antiforgery="true">
+            <button type="submit"
+                    class="btn btn-sm float-right border-grey btn-secondary marg">
+                Info
+            </button>
+        </form>
+        <form asp-controller="Todos" asp-action="SetReminder" asp-route-todoId="@Model?.Id" method="get" asp-antiforgery="true">
+            <button type="submit"
+                    class="btn btn-sm float-right border-grey btn-warning marg">
+                Set Reminder
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model TodoListViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="card card-outline-primary m-1 p-1 marg-no-border">
+    <div class="bg-faded p-1 d-flex justify-content-center">
+        <form asp-controller="TodoLists" asp-action="Add" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="border-grey">
+                <div class="form-group">
+                    <label class="marg" asp-for="Id" hidden></label>
+                    <input class="marg" asp-for="Id" hidden readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="marg" asp-for="Todos" hidden></label>
+                    <input class="marg" asp-for="Todos" hidden readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="marg" asp-for="Title" class="control-label">Type title here:</label>
+                    <input class="marg" asp-for="Title" class="form-control" />
+                    <div class="text-center">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="marg-no-border">
+                    <button type="submit"
+                            class="btn btn-sm btn-primary border-grey">
+                        Create
+                    </button>
+
+                    <a asp-controller="TodoLists" asp-action="Lists"
+                       method="get" class="btn btn-sm float-right btn-secondary border-grey">
+                        Back
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
